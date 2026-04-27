@@ -16,7 +16,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         src: seoAssets.brandIcon,
         sizes: "any",
-        type: "image/svg+xml",
+        type: "image/x-icon",
         purpose: "any",
       },
       {

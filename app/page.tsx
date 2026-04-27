@@ -19,7 +19,7 @@ import {
   Waves,
   Wrench,
 } from "lucide-react";
-import { businessInfo, getHomePageStructuredData } from "@/lib/site";
+import { brandAssets, businessInfo, getHomePageStructuredData, siteConfig } from "@/lib/site";
 
 const offerings: { title: string; icon: LucideIcon }[] = [
   { title: "Yearly maintenance", icon: Cog },
@@ -37,10 +37,8 @@ const rideTypes: { title: string; icon: LucideIcon }[] = [
   { title: "All-Terrain Vehicles (ATVs)", icon: Gauge },
   { title: "Personal Watercraft (PWC)", icon: Waves },
   { title: "Golf carts", icon: CarFront },
-  { title: "Snowmobiles", icon: Gauge },
   { title: "Dirt Bikes", icon: Wrench },
   { title: "Dune Buggies", icon: CarFront },
-  { title: "Sand Rails", icon: Truck },
   { title: "Three-Wheel Roadsters", icon: Gauge },
   { title: "Autocycles", icon: Wrench },
   { title: "Neighborhood Electric Vehicles (NEVs)", icon: Cpu },
@@ -98,17 +96,16 @@ export default function Home() {
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 py-6 sm:px-8 lg:gap-24 lg:px-12 lg:py-10">
         <header className="machine-panel px-5 py-4 sm:px-6">
           <div className="relative z-10 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--muted)] shadow-[var(--shadow-recessed)]">
-                <Wrench className="h-5 w-5 text-[var(--accent)]" />
-              </div>
-              <div className="min-w-0">
-                <div className="machine-label flex items-center gap-2 text-[var(--muted-foreground)]">
-                  <span className="machine-led" />
-                  Joyride sport machines
-                </div>
-              </div>
-            </div>
+            <a className="flex items-center" href="#top" aria-label={siteConfig.name}>
+              <Image
+                src={brandAssets.logo}
+                alt={siteConfig.name}
+                width={1536}
+                height={1024}
+                priority
+                className="h-auto w-[150px] sm:w-[180px] lg:w-[200px]"
+              />
+            </a>
 
             <div className="flex flex-col gap-3 lg:items-end">
               <nav className="flex flex-wrap items-center gap-1 text-sm font-medium text-[var(--muted-foreground)] lg:justify-end">
@@ -146,9 +143,20 @@ export default function Home() {
               </div>
 
               <div className="space-y-4">
-                <h1 className="text-emboss max-w-3xl text-5xl font-extrabold tracking-[-0.04em] text-foreground sm:text-6xl lg:text-7xl">
-                  Repairing your ride, reviving your adventure.
-                </h1>
+                <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center lg:gap-6">
+                  <div className="order-2 flex justify-center lg:order-2 lg:justify-end">
+                    <Image
+                      src={brandAssets.logo}
+                      alt={`${siteConfig.name} logo`}
+                      width={1536}
+                      height={1024}
+                      className="h-auto w-full max-w-[420px] sm:max-w-[520px] lg:max-w-[320px]"
+                    />
+                  </div>
+                  <h1 className="text-emboss order-1 max-w-3xl text-5xl font-extrabold tracking-[-0.04em] text-foreground sm:text-6xl lg:order-1 lg:text-7xl">
+                    Repairing your ride, reviving your adventure.
+                  </h1>
+                </div>
                 <p className="max-w-2xl text-lg leading-8 text-[var(--muted-foreground)]">
                   Joyride Sport Machines handles recreational and sport vehicle service for
                   side-by-sides, ATVs, PWCs, golf carts, dirt bikes, boats, and more with

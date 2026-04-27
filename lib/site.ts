@@ -16,10 +16,8 @@ export const supportedVehicleTypes = [
   "All-Terrain Vehicles (ATVs)",
   "Personal Watercraft (PWC)",
   "Golf carts",
-  "Snowmobiles",
   "Dirt Bikes",
   "Dune Buggies",
-  "Sand Rails",
   "Three-Wheel Roadsters",
   "Autocycles",
   "Neighborhood Electric Vehicles (NEVs)",
@@ -59,10 +57,15 @@ export const siteConfig = {
 } as const;
 
 export const seoAssets = {
-  brandIcon: "/brand-icon.svg",
+  brandIcon: "/favicon.ico",
   ogImage: "/opengraph-image",
   twitterImage: "/twitter-image",
   primaryImage: "/images/dune-buggy-dubai.jpg",
+} as const;
+
+export const brandAssets = {
+  logo: "/images/transparent-logo.png",
+  logoFilePath: "public/images/transparent-logo.png",
 } as const;
 
 export const businessInfo = {
@@ -159,8 +162,8 @@ export function getSiteMetadata(): Metadata {
     publisher: siteConfig.name,
     manifest: "/manifest.webmanifest",
     icons: {
-      icon: [{ url: seoAssets.brandIcon, type: "image/svg+xml" }],
-      shortcut: [{ url: seoAssets.brandIcon, type: "image/svg+xml" }],
+      icon: [{ url: seoAssets.brandIcon, type: "image/x-icon", sizes: "any" }],
+      shortcut: [{ url: seoAssets.brandIcon, type: "image/x-icon", sizes: "any" }],
       apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
     },
     openGraph: {
