@@ -1,0 +1,362 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-heading: var(--font-inter);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #e0e5ec;
+  --foreground: #2d3436;
+  --card: #f0f2f5;
+  --card-foreground: #2d3436;
+  --popover: #f0f2f5;
+  --popover-foreground: #2d3436;
+  --primary: #f97316;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f2f5;
+  --secondary-foreground: #2d3436;
+  --muted: #d1d9e6;
+  --muted-foreground: #4a5568;
+  --accent: #f97316;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --border: #babecc;
+  --input: #d1d9e6;
+  --ring: #fb923c;
+  --chart-1: #fed7aa;
+  --chart-2: #fdba74;
+  --chart-3: #fb923c;
+  --chart-4: #ea580c;
+  --chart-5: #9a3412;
+  --radius: 1rem;
+  --sidebar: #f0f2f5;
+  --sidebar-foreground: #2d3436;
+  --sidebar-primary: #f97316;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #d1d9e6;
+  --sidebar-accent-foreground: #2d3436;
+  --sidebar-border: #babecc;
+  --sidebar-ring: #fb923c;
+  --shadow-card: 8px 8px 16px #babecc, -8px -8px 16px #ffffff;
+  --shadow-floating: 12px 12px 24px #babecc, -12px -12px 24px #ffffff,
+    inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+  --shadow-pressed: inset 6px 6px 12px #babecc, inset -6px -6px 12px #ffffff;
+  --shadow-recessed: inset 4px 4px 8px #babecc, inset -4px -4px 8px #ffffff;
+  --shadow-dark: 16px 16px 32px rgba(15, 23, 42, 0.35),
+    -8px -8px 18px rgba(255, 255, 255, 0.04);
+  --panel-dark: #1f252b;
+  --panel-dark-foreground: #f8fafc;
+}
+
+.dark {
+  --background: #e0e5ec;
+  --foreground: #2d3436;
+  --card: #f0f2f5;
+  --card-foreground: #2d3436;
+  --popover: #f0f2f5;
+  --popover-foreground: #2d3436;
+  --primary: #f97316;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f2f5;
+  --secondary-foreground: #2d3436;
+  --muted: #d1d9e6;
+  --muted-foreground: #4a5568;
+  --accent: #f97316;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --border: #babecc;
+  --input: #d1d9e6;
+  --ring: #fb923c;
+  --chart-1: #fed7aa;
+  --chart-2: #fdba74;
+  --chart-3: #fb923c;
+  --chart-4: #ea580c;
+  --chart-5: #9a3412;
+  --sidebar: #f0f2f5;
+  --sidebar-foreground: #2d3436;
+  --sidebar-primary: #f97316;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #d1d9e6;
+  --sidebar-accent-foreground: #2d3436;
+  --sidebar-border: #babecc;
+  --sidebar-ring: #fb923c;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(circle at top left, rgba(255, 255, 255, 0.82), transparent 32%),
+      radial-gradient(circle at 15% 18%, rgba(249, 115, 22, 0.18), transparent 14%),
+      radial-gradient(circle at 85% 8%, rgba(249, 115, 22, 0.14), transparent 14%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(209, 217, 230, 0.65));
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgba(249, 115, 22, 0.2);
+  }
+}
+
+@layer utilities {
+  .chassis-noise {
+    background-image:
+      radial-gradient(rgba(255, 255, 255, 0.32) 1px, transparent 1px),
+      radial-gradient(rgba(45, 52, 54, 0.04) 1px, transparent 1px);
+    background-position: 0 0, 8px 8px;
+    background-size: 16px 16px;
+    opacity: 0.24;
+  }
+
+  .machine-panel {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 1.5rem;
+    background: linear-gradient(145deg, #eef2f7, #d7dde6);
+    box-shadow: var(--shadow-card);
+  }
+
+  .machine-panel::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    background:
+      radial-gradient(circle at top left, rgba(45, 52, 54, 0.18) 0 2px, transparent 2.5px),
+      radial-gradient(circle at top right, rgba(45, 52, 54, 0.18) 0 2px, transparent 2.5px),
+      radial-gradient(circle at bottom left, rgba(45, 52, 54, 0.18) 0 2px, transparent 2.5px),
+      radial-gradient(circle at bottom right, rgba(45, 52, 54, 0.18) 0 2px, transparent 2.5px);
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  .machine-panel::after {
+    content: "";
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    height: 24px;
+    width: 30px;
+    border-radius: 9999px;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0 6px,
+      rgba(45, 52, 54, 0.18) 6px 7px
+    );
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .machine-panel-dark {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.75rem;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.18)),
+      linear-gradient(145deg, #303840, #1c2127);
+    box-shadow: var(--shadow-dark);
+    color: var(--panel-dark-foreground);
+  }
+
+  .machine-panel-dark::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  .machine-screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background: #0b1014;
+    box-shadow:
+      inset 8px 8px 16px rgba(0, 0, 0, 0.42),
+      inset -3px -3px 8px rgba(255, 255, 255, 0.05);
+  }
+
+  .machine-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.18), transparent 36%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .machine-screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.18) 50%);
+    background-size: 100% 4px;
+    mix-blend-mode: screen;
+    opacity: 0.28;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .machine-label {
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .text-emboss {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+  }
+
+  .recessed-well {
+    border-radius: 1rem;
+    background: rgba(209, 217, 230, 0.75);
+    box-shadow: var(--shadow-recessed);
+  }
+
+  .machine-button,
+  .machine-button-secondary {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    border-radius: 1rem;
+    padding-inline: 1.25rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition:
+      transform 150ms ease-out,
+      box-shadow 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      filter 150ms ease-out,
+      color 150ms ease-out;
+  }
+
+  .machine-button:hover,
+  .machine-button-secondary:hover {
+    filter: brightness(1.05);
+  }
+
+  .machine-button:active,
+  .machine-button-secondary:active {
+    transform: translateY(2px);
+  }
+
+  .machine-button {
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: linear-gradient(145deg, #fb923c, #ea580c);
+    box-shadow:
+      4px 4px 8px rgba(154, 52, 18, 0.35),
+      -4px -4px 8px rgba(255, 167, 96, 0.4);
+    color: white;
+  }
+
+  .machine-button:active {
+    box-shadow:
+      inset 6px 6px 12px rgba(154, 52, 18, 0.4),
+      inset -6px -6px 12px rgba(255, 167, 96, 0.28);
+  }
+
+  .machine-button-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    background: linear-gradient(145deg, #edf1f6, #d8dee7);
+    box-shadow: var(--shadow-card);
+    color: var(--foreground);
+  }
+
+  .machine-button-secondary:active {
+    box-shadow: var(--shadow-pressed);
+  }
+
+  .machine-led {
+    display: inline-block;
+    height: 0.75rem;
+    width: 0.75rem;
+    border-radius: 9999px;
+    background: #22c55e;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.85);
+  }
+
+  .machine-led-warn {
+    background: #fb923c;
+    box-shadow: 0 0 10px rgba(251, 146, 60, 0.85);
+  }
+
+  .lift-hover {
+    transition:
+      transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      box-shadow 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .lift-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-floating);
+  }
+
+  .blueprint-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
